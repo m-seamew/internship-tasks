@@ -6,10 +6,10 @@ export default class Controller{
         this.model = new Model(); 
         this.view = new View();
 
-        this.view.render(this.model.data, this.model.isArchived, this.calcStat, this.model.cathegories);
+        this.view.render(this.model.data, this.model.isArchived, this.calcStat, this.model.cathegories, this.model.returnDates);
 
         this.view.addEventListener(
-            this.callbackForClosePopup,
+            this.callbackForClosePopup, 
             this.archivedStatusChange,
             this.openTaskPopup,
         );
@@ -25,7 +25,7 @@ export default class Controller{
     editedTaskTarget;
 
     reRender = () => {
-        this.view.render(this.model.data, this.model.isArchived, this.calcStat, this.model.cathegories);
+        this.view.render(this.model.data, this.model.isArchived, this.calcStat, this.model.cathegories, this.model.returnDates);
         this.view.addDynamicEventListener(this.deleteTask, this.changeArchivedStatusOfTask, this.openTaskPopupUpd,);
     }
 

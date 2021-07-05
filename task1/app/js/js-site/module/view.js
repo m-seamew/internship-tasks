@@ -8,13 +8,13 @@ export default class View {
     list;
     statList;
 
-    render( data, archivedParam, statFunc, cathegoriesLinks ){
+    render( data, archivedParam, statFunc, cathegoriesLinks, returnDates){
         this.list.innerHTML = data.filter( e => e.archived === archivedParam).map( el => {
             return `
             <tr class="todo__task">
                 <th scope="row">
                     <div class="todo__icon">
-                        <img class="icon--vertical-middle todo__icon--header" src="${ '/img' + this.returnCathegoryImg(el.cathegory, cathegoriesLinks) }" alt="cathegory">
+                        <img class="icon--vertical-middle todo__icon--header" src="${ './img' + this.returnCathegoryImg(el.cathegory, cathegoriesLinks) }" alt="cathegory">
                     </div>
                 </th>
                 <td>${ el.taskName }</td> 
@@ -25,7 +25,8 @@ export default class View {
                         ${ el.content }
                     </div>
                 </td>
-                <td>${ this.returnDates(el.content) }</td>
+                <td>${  this.renderReturnedDates( returnDates( el.content ) ) }
+                </td>
                 <td>
                     <div class="todo__icon todo__icon--update">
                         <img class="icon--vertical-middle todo__icon--header" src="./img/pencil.svg" alt="change task" data-id=${ el.id }>
@@ -66,45 +67,10 @@ export default class View {
         }).join('');   
     }
 
-    returnDates( cont ){
-        const regExp = [ 
-            /((0|1)[0-9]([.\-/])[0-3][0-9]([.\-/])(19|20)[0-9]{2})/g,
-            /([0-3][0-9]([.\-/])(0|1)[0-9]([.\-/])(19|20)[0-9]{2})/g,
-            /([0-9]([.\-/])[0-3][0-9]([.\-/])(19|20)[0-9]{2})/g,
-            /([0-3][0-9]([.\-/])[0-9]([.\-/])(19|20)[0-9]{2})/g,
-            /([0-9]([.\-/])[0-9]([.\-/])(19|20)[0-9]{2})/g,
-        ]
-
-        const wrongExp = [
-            /([0-9][0-9]([.\-/])[3-9][2-9]([.\-/])(19|20)[0-9]{2})/g,
-            /([3-9][2-9]([.\-/])[0-9][0-9]([.\-/])(19|20)[0-9]{2})/g,
-            /([1-9][3-9]([.\-/])[1-9][3-9]([.\-/])(19|20)[0-9]{2})/g,
-            /([2-9][0-9]([.\-/])[2-9][0-9]([.\-/])(19|20)[0-9]{2})/g,
-            /([0][0]([.\-/])[0-9][0-9]([.\-/])(19|20)[0-9]{2})/g,
-            /([0-9][0-9]([.\-/])[0][0]([.\-/])(19|20)[0-9]{2})/g,
-        ]
-
-        wrongExp.forEach( el => {
-            if(cont.match(el) !== null){
-                cont.match(el).forEach( el => cont = cont.replace(el, ''));           
-            }
-        })
-        
-
-        let arr = [];
-        regExp.forEach( el => { 
-            if(cont.match(el) !== null){
-                cont.match(el).forEach( el => {
-                    cont = cont.replace(el, '');
-                    arr.push(el);
-                });           
-            }
-        });
-
-        const arrMatches = Array.from( new Set(arr) );
+    renderReturnedDates( arrMatches ){
         return arrMatches.length > 0
-            ? arrMatches.map( el => `<div>${el}</div>`).join('')
-            : '-'
+                  ? arrMatches.map( el => `<div>${el}</div>`).join('')
+                  : '-';
     }
 
     returnCathegoryImg( cathegory, cathegoriesLinks ){

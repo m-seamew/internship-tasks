@@ -46,7 +46,7 @@ function style() {
     return gulp.src(scssPath)
         .pipe(sass())
         .pipe(prefix('last 2 versions'))
-        // .pipe(sass({outputStyle: 'compressed'}))
+        .pipe(sass({outputStyle: 'compressed'}))
         .pipe(cleanCSS({level: 2}))
         .pipe(stripCssComments(
             {preserve: false}
