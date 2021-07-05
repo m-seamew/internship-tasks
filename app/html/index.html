@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="build/css/main.css">
+        <title>Task 1</title>
+    </head>
+    <body>
+        <main class="main">
+            <div class="main__container">
+    
+                <div class="main__popup-container">
+                    <div class="main__popup">
+                        //= blocks/redactingTask.html
+                    </div>
+                </div>
+
+                <div class="main__table-scroll">
+                    //= blocks/mainListToDo.html
+                </div>
+          
+                <button type="button" class="btn btn-primary" id="new_task">New Task</button>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary active">
+                        <input type="radio" name="status" id="active_status" value="false" > Active tasks
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="status" id="archived_status" value="true"> Archived task
+                    </label>
+                </div>
+      
+                <div class="main__table-scroll">
+                    //= blocks/statTable.html
+                </div>
+      
+            </div>
+      </main>
+
+      <script src="./build/js/main.js" type="module"></script>
+      
+    </body>
+</html>

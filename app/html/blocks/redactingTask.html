@@ -1,0 +1,63 @@
+<div class="todo__redacting">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Cathegory</th> 
+                <th scope="col">Content</th>           
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input class="form-control" type="text" placeholder="Name of task" id="task_name">
+                </td>
+                <td>
+                    <select class="form-control" id="task_cathegory">
+                        <option value="Task">Task</option>
+                        <option value="Random Thought">Random Thought</option>
+                        <option value="Idea">Idea</option>
+                    </select>
+                </td>
+                <td>
+                    <div class="todo__content">
+                        <textarea class="form-control" rows="4" placeholder="Text" id="task_content"></textarea>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <div class="todo__redact-icon-container">
+                        <div class="todo__icon todo__icon--redacting todo__icon--confirm-changes">
+                            <img class="icon--vertical-middle todo__icon--redact" src="./img/check-mark.svg" alt="change task">
+                        </div>
+                        <div class="todo__icon todo__icon--redacting">
+                            <img  id="task_close" class="icon--vertical-middle todo__icon--redact todo__icon--redact-close" src="./img/close.svg" alt="change task">
+                        </div>
+                    </div>   
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+

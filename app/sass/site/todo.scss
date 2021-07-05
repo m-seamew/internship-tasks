@@ -1,0 +1,50 @@
+.todo__{
+    &icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 25px;
+        width: 25px;
+    };
+    &icon > *{
+        cursor: pointer;
+    }
+    &icon--header{
+        height: 100%;
+        max-height: 1rem;
+        max-width: 1rem;
+        //width: 100%;
+        //object-fit: contain;
+    };
+    &icon--fixed{
+        pointer-events: none;
+        cursor: none;
+    };
+    &content--small{
+        max-width: 20vw;
+    }
+    &icon--redact{
+        height: 100%;
+        max-height: 2rem;
+        max-width: 2rem; 
+    }
+    &icon--redact-close{
+        max-height: 1.6rem;
+        max-width: 1.6rem;
+    }
+    &icon--redacting:not(:last-child){
+        margin-right: 20px;
+    }
+    &redact-icon-container{
+        display: flex;
+        justify-content: center
+    }
+
+};
+
+@media (max-width: 800px){
+    .todo__content--small{
+        max-width: 70vw;
+        min-width: 250px;
+    }
+}
