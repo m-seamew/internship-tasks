@@ -12,10 +12,10 @@ const validateParam = require('../services/middleware/validateParam');
 router.delete( '/:id', validateParam(1, 0, ['int']), controller.deleteOne);
  
 // POST
-router.post('/', validateBody(bodySchema.Create), controller.createNote);
+router.post('/',  validateParam(0, 0), validateBody(bodySchema.Create), controller.createNote);
 
 // PATCH
-router.patch('/:id', validateBody(bodySchema.Update), controller.updateNote);
+router.patch('/:id', validateParam(1, 0, ['int']), validateBody(bodySchema.Update), controller.updateNote);
 
 // GET
 router.get('/stats', validateParam(0, 0), controller.getStat);
