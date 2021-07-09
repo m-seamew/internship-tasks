@@ -1,0 +1,30 @@
+.modal{
+    position: fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background: rgba($color: #000000, $alpha: .5);
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+
+    &__body{
+        padding: 2rem;
+        width: 400px;
+        border-radius: 5px;
+        background: white;
+        height: fit-content;
+    }
+
+    &__controllers-cont{
+        display: flex;
+        justify-content: center;
+        padding-top: 2rem;
+    }
+
+    &__btn{
+        margin: .7rem; 
+    }
+}
+
